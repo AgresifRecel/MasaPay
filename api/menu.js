@@ -1,12 +1,14 @@
 export default async function handler(req, res) {
   try {
     const response = await fetch(
-      "https://europe-west3-paragastroteka-inventory.cloudfunctions.net/getQrMenu?customerId=sakal-kafe-bar&branchId=sakal-kafe-bar-1"
+      "https://api.allorigins.win/raw?url=" +
+        encodeURIComponent(
+          "https://europe-west3-paragastroteka-inventory.cloudfunctions.net/getQrMenu?customerId=sakal-kafe-bar&branchId=sakal-kafe-bar-1"
+        )
     );
 
     const data = await response.json();
 
-    // 🔥 Menü parse (temiz format)
     const all = [];
 
     data.categories.forEach((cat) => {
